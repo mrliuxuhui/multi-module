@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "plm-project", url = "http://plm-project.longfor.sit/api/project", configuration = R4jFallbackConfig.class)
-public interface PlmProjectClient {
+@FeignClient(value = "flyingwillow", url = "aaa", configuration = R4jFallbackConfig.class)
+public interface ProductClient {
 
     @GetMapping(value = "/detail")
-    @CircuitBreaker(name = "plm-project", fallbackMethod = "")
-    Object getPlanDetailByProjectId(@RequestParam("projectId") String projectId);
+    @CircuitBreaker(name = "flyingwillow", fallbackMethod = "fallback")
+    Object getDetailById(@RequestParam("productId") String productId);
 }
