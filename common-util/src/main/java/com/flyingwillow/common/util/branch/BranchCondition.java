@@ -17,12 +17,12 @@ public class BranchCondition<T> {
         return condition.getAsBoolean();
     }
 
-    protected BranchBuilder then(Supplier<T> supplier) {
+    public BranchBuilder then(Supplier<T> supplier) {
         this.supplier = supplier;
         return this.builder;
     }
 
-    protected BranchBuilder then(VoidSupplier supplier) {
+    public BranchBuilder then(VoidSupplier supplier) {
         this.supplier = (Supplier<T>) supplier;
         return this.builder;
     }
