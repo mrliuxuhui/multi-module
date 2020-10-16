@@ -84,3 +84,34 @@ class SomeService{
 
 }
 ```
+
+## 2. 条件分支简化工具类
+BranchBuilder  条件分支构建工具类
+
+### 使用场景
++ 众多 if/else 增加代码复杂度时
+
++ 使用示例
+
+```java
+class UserCase {
+  
+    public void old(){
+        if(3>5){
+            System.out.println("a");
+        } else if( 6>5) {
+            System.out.println("b");
+        }
+    }
+
+    public void better() {
+        BranchBuilder.nullReturnBuilder()
+                        .on(() -> System.out.println("a");)
+                        .then(() -> r[0] = "a")
+                        .on(() -> 6>5)
+                        .then(() -> System.out.println("b");)
+                        .apply();
+    }
+  
+}
+```
