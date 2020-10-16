@@ -31,4 +31,14 @@ class BranchBuilderTest {
         assertThat(optional).isNotNull();
         assertThat(optional.get()).isEqualTo("else");
     }
+
+    @Test
+    void 直接接收值_无else() {
+
+        String a = new BranchBuilder<String>().on(() -> 3 > 5)
+                .then(() -> "if")
+                .otherwise(() -> "else")
+                .get().get();
+        assertThat(a).isEqualTo("else");
+    }
 }

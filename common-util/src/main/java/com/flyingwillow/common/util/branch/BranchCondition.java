@@ -6,9 +6,9 @@ import java.util.function.Supplier;
 public class BranchCondition<T> {
     private BooleanSupplier condition;
     private Supplier<T> supplier;
-    private BranchBuilder builder;
+    private BranchBuilder<T> builder;
 
-    public BranchCondition(BooleanSupplier condition, BranchBuilder builder) {
+    public BranchCondition(BooleanSupplier condition, BranchBuilder<T> builder) {
         this.condition = condition;
         this.builder = builder;
     }
@@ -17,12 +17,12 @@ public class BranchCondition<T> {
         return condition.getAsBoolean();
     }
 
-    public BranchBuilder then(Supplier<T> supplier) {
+    public BranchBuilder<T> then(Supplier<T> supplier) {
         this.supplier = supplier;
         return this.builder;
     }
 
-    public BranchBuilder then(VoidSupplier supplier) {
+    public BranchBuilder<T> then(VoidSupplier supplier) {
         this.supplier = (Supplier<T>) supplier;
         return this.builder;
     }

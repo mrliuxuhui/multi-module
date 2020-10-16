@@ -25,7 +25,7 @@ public class BranchCompose<T> {
         if(otherwise != null){
             return Optional.ofNullable(otherwise.get());
         }
-        return Optional.ofNullable((T) null);
+        return Optional.ofNullable( null);
     }
 
     public BranchCompose<T> setOtherwise(Supplier<T> supplier) {

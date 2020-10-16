@@ -6,28 +6,28 @@ import java.util.function.Supplier;
 
 public class BranchBuilder<T> {
 
-    private BranchCompose compose;
+    private BranchCompose<T> compose;
 
     public BranchBuilder() {
-        this.compose = new BranchCompose<T>();
+        this.compose = new BranchCompose<>();
     }
 
     public static BranchBuilder<Void> nullReturnBuilder(){
         return new BranchBuilder<Void>();
     }
 
-    public BranchCondition on(BooleanSupplier condition) {
-        BranchCondition branchCondition = new BranchCondition(condition, this);
+    public BranchCondition<T> on(BooleanSupplier condition) {
+        BranchCondition<T> branchCondition = new BranchCondition(condition, this);
         this.compose.addCondition(branchCondition);
         return branchCondition;
     }
 
-    public BranchCompose otherwise(Supplier<T> supplier) {
+    public BranchCompose<T> otherwise(Supplier<T> supplier) {
         return this.compose.setOtherwise(supplier);
     }
 
-    public BranchCompose otherwise(VoidSupplier supplier){
-        return this.compose.setOtherwise(supplier);
+    public BranchCompose<T> otherwise(VoidSupplier supplier){
+        return this.compose.setOtherwise((Supplier<T>)supplier);
     }
 
     public void apply(){
