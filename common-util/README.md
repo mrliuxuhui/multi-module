@@ -115,7 +115,7 @@ class UserCase {
   
     // 带返回值
     public int better() {
-        return BranchBuilder.nullReturnBuilder()
+        return new BranchBuilder()
                         .on(() -> 3>5)
                         .then(() -> 1)
                         .on(() -> 6>5)
