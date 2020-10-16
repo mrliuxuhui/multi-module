@@ -106,8 +106,8 @@ class UserCase {
 
     public void better() {
         BranchBuilder.nullReturnBuilder()
-                        .on(() -> System.out.println("a");)
-                        .then(() -> r[0] = "a")
+                        .on(() -> 3>5)
+                        .then(() -> System.out.println("a");)
                         .on(() -> 6>5)
                         .then(() -> System.out.println("b");)
                         .apply();
