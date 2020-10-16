@@ -32,4 +32,9 @@ public class BranchCompose<T> {
         this.otherwise = supplier;
         return this;
     }
+
+    public BranchCompose<T> setOtherwise(VoidSupplier supplier) {
+        this.otherwise = (Supplier<T>) supplier;
+        return this;
+    }
 }
