@@ -1,10 +1,12 @@
 package com.flyingwillow.common.util.branch;
 
 import java.util.function.BooleanSupplier;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class BranchCondition<T> {
     private BooleanSupplier condition;
+    private Predicate predicate;
     private Supplier<T> supplier;
     private BranchBuilder<T> builder;
 
